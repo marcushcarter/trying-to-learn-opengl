@@ -16,7 +16,7 @@ const char *vertexShaderSource = "#version 330 core\n"
     "{\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
     "}\0";
-    
+
 const char *fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
     "void main()\n"
@@ -88,17 +88,29 @@ int main()
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
+    // float vertices[] = {
+    //      0.5f,  0.5f, 0.0f,  // top right
+    //      0.5f, -0.5f, 0.0f,  // bottom right
+    //     -0.5f, -0.5f, 0.0f,  // bottom left
+    //     -0.5f,  0.5f, 0.0f   // top left 
+    // };
+
+    // learnopengl exercise #1
     float vertices[] = {
-         0.5f,  0.5f, 0.0f,  // top right
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left 
-    };
+        -0.9f, -0.5f, 0.0f,
+        -0.0f, -0.5f, 0.0f,
+        -0.0f, 0.5f, 0.0f,
+
+        0.0f, -0.5f, 0.0f,
+        0.9f, -0.5f, 0.0f,
+        0.9f, 0.5f, 0.0f
+   };
+
     unsigned int indices[] = {  // note that we start from 0!
         0, 1, 3,  // first Triangle
         1, 2, 3   // second Triangle
     };
-
+   
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
@@ -131,8 +143,8 @@ int main()
 
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        //glDrawArrays(GL_TRIANGLES, 0, 6);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
  
         // swap buffers and pull input events
         glfwSwapBuffers(window);
