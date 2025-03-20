@@ -40,8 +40,6 @@ int main()
         return -1;
     }
 
-    
-    Shader flipped("shaders/flip.vert", "shaders/default.frag");
     Shader default1("shaders/default.vert", "shaders/default.frag");
 
     float vertices[] = {
@@ -105,8 +103,11 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        flipped.use();
-        // default1.use();
+        // float offset = 0.5f;
+        // offset.setFloat("xOffset", offset);
+
+        // offset.use();
+        default1.use();
         // glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
