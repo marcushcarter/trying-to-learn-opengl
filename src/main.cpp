@@ -106,6 +106,9 @@ int main()
         // float offset = 0.5f;
         // offset.setFloat("xOffset", offset);
 
+        float offset = 0.5f;
+        default1.setFloat("xOffset", offset);
+
         // offset.use();
         default1.use();
         // glUseProgram(shaderProgram);
