@@ -1,14 +1,7 @@
-allt: buildt runt
-all: build run
-
-buildt:
-	g++ -g -I include -L lib -o maint src/main.c include/glad.c -lglfw3dll
+compile: build run
 
 build:
-	g++ -mwindows -g -I include -L lib -o main src/main.c include/glad.c -lglfw3dll
-
-runt:
-	./maint.exe
+	g++ -g -I include -L lib -o main src/main.cpp include/glad.c -lglfw3dll
 
 run:
 	./main.exe
